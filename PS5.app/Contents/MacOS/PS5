@@ -2,4 +2,6 @@
 # Discord lists only windows that belong to an app, and mpv alone is not an app.
 # macOS starts apps without the Homebrew directories on the PATH.
 PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
-exec mpv "$@"
+# The low-latency profile decodes on one thread. Then mpv shows some frames of a 1080p 60 fps stream after the correct time.
+# --vd-lavc-threads=0 comes after the profile in "$@" and overrides the profile.
+exec mpv "$@" --vd-lavc-threads=0
