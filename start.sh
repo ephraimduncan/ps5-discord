@@ -10,7 +10,7 @@ fi
 # Homebrew puts dnsmasq in sbin, which is not always on the PATH.
 dnsmasq=$(brew --prefix)/sbin/dnsmasq
 command -v mediamtx >/dev/null || brew install mediamtx
-command -v ffplay >/dev/null || brew install ffmpeg
+command -v mpv >/dev/null || brew install mpv
 [[ -x $dnsmasq ]] || brew install dnsmasq
 
 iface=$(route -n get default | awk '/interface:/ {print $2}')

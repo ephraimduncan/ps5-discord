@@ -8,4 +8,6 @@ moq: no
 paths:
   all_others:
     # `open` starts the player as its own app. Discord takes no sound from a player that Terminal started.
-    runOnAvailable: open -n PS5.app --args -loglevel warning -fflags nobuffer -flags low_delay -framedrop -autoexit -window_title PS5 rtmp://127.0.0.1:1935/$MTX_PATH
+    # --hidpi-window-scale=no draws one stream pixel on one screen pixel, so the window loses no detail.
+    # --force-media-title keeps the stream key in the path out of the window title.
+    runOnAvailable: open -n PS5.app --args --no-config --profile=low-latency --hidpi-window-scale=no --no-osc --force-media-title=PS5 rtmp://127.0.0.1:1935/$MTX_PATH

@@ -2,15 +2,13 @@
 
 Share your PS5 screen on Discord from a Mac. You do not need a capture card or Remote Play, and you play on your TV as usual.
 
-**Status:** The stream from a PS5 shows on the Mac. We did not do a test of the Discord steps with a PS5.
-
 ## How it works
 
 A PS5 cannot share its screen on Discord, but it can send a broadcast to Twitch. This tool sends that broadcast to your Mac:
 
 1. `dnsmasq` answers the DNS queries of the PS5 and points the Twitch stream servers at your Mac.
 2. `mediamtx` receives the stream.
-3. `PS5.app` starts `ffplay`, which shows the stream in a window with the name "PS5". Discord shows only the windows of apps.
+3. `PS5.app` starts `mpv`, which shows the stream in a window with the name "PS5". Discord shows only the windows of apps.
 
 You share the "PS5" window on Discord. The stream does not go to Twitch.
 
@@ -35,7 +33,7 @@ Do this procedure one time.
    ./start.sh
    ```
 
-   The first start installs `mediamtx`, `dnsmasq`, and `ffmpeg` with Homebrew.
+   The first start installs `mediamtx`, `dnsmasq`, and `mpv` with Homebrew.
 
 2. Type your Mac password. The DNS server must have administrator permission to start.
 3. Write down the IP address that the tool shows.
@@ -62,6 +60,14 @@ Do this procedure one time.
 9. To stop the tool, use Ctrl+C in Terminal.
 
 **Caution:** Start the tool before you start a broadcast. If the tool does not operate, the PS5 uses the Secondary DNS and the broadcast goes to Twitch.
+
+## Quality
+
+The PS5 sends a broadcast of 1920 x 1080 pixels at 60 frames per second, at most. A PS5 Pro has the same limit, and this tool cannot get a 4K picture from the PS5. To get this quality, select the highest value in Settings > Captures and Broadcasts > Broadcasts > Video Quality on the PS5.
+
+The "PS5" window shows each pixel of the broadcast on one pixel of the screen. If you make the window smaller, the picture loses detail.
+
+Discord sets the quality that your friends get. Without Nitro, [Discord sends 720p at 30 frames per second](https://support.discord.com/hc/en-us/articles/360040816151-Go-Live-and-Screen-Share) at most.
 
 ## Problems
 
