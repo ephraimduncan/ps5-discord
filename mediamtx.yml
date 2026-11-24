@@ -7,4 +7,5 @@ moq: no
 
 paths:
   all_others:
-    runOnAvailable: ffplay -loglevel warning -fflags nobuffer -flags low_delay -framedrop -window_title PS5 rtmp://127.0.0.1:1935/$MTX_PATH
+    # `open` starts the player as its own app. Discord takes no sound from a player that Terminal started.
+    runOnAvailable: open -n PS5.app --args -loglevel warning -fflags nobuffer -flags low_delay -framedrop -autoexit -window_title PS5 rtmp://127.0.0.1:1935/$MTX_PATH

@@ -2,7 +2,7 @@
 
 Share your PS5 screen on Discord from a Mac. You do not need a capture card or Remote Play, and you play on your TV as usual.
 
-**Status:** We did a test of this tool with a test stream from a computer. We did not do a test with a PS5.
+**Status:** The stream from a PS5 shows on the Mac. We did not do a test of the Discord steps with a PS5.
 
 ## How it works
 
@@ -10,7 +10,7 @@ A PS5 cannot share its screen on Discord, but it can send a broadcast to Twitch.
 
 1. `dnsmasq` answers the DNS queries of the PS5 and points the Twitch stream servers at your Mac.
 2. `mediamtx` receives the stream.
-3. `ffplay` shows the stream in a window with the name "PS5".
+3. `PS5.app` starts `ffplay`, which shows the stream in a window with the name "PS5". Discord shows only the windows of apps.
 
 You share the "PS5" window on Discord. The stream does not go to Twitch.
 
@@ -56,7 +56,7 @@ Do this procedure one time.
 3. Select Broadcast > Twitch > Go Live. The "PS5" window opens on the Mac.
 4. In Discord, connect to a voice channel.
 5. Click "Share Your Screen".
-6. Select the "PS5" window.
+6. In the list of applications, select "PS5".
 7. Turn on the sound.
 8. Click "Go Live".
 9. To stop the tool, use Ctrl+C in Terminal.
@@ -67,7 +67,7 @@ Do this procedure one time.
 
 | Problem | Solution |
 | --- | --- |
-| The "PS5" window does not open. | Make sure that the Primary DNS on the PS5 is the IP address that the tool shows. Terminal shows each host name that the PS5 looks up. Open an issue and include those lines. |
+| The "PS5" window does not open. | Make sure that the Primary DNS on the PS5 is the IP address that the tool shows. Terminal shows each host name that the PS5 looks up. Open an issue and include the lines that start with `dnsmasq`. Do not include the lines from `mediamtx`, because they show your Twitch stream key. |
 | The broadcast goes to Twitch. | The PS5 used the Secondary DNS. Set the Secondary DNS to the IP address of your Mac also. Then the PS5 has an internet connection only while the tool operates. |
 | Your friends cannot hear the game. | Use the Discord app, not Vesktop. Turn on the sound when you share the window. Let Discord record the screen and the system audio in System Settings > Privacy & Security. |
 | You hear the game two times. | The "PS5" window plays the sound some time after the TV. Set the volume of the Mac to zero. Then make sure that your friends continue to hear the game. |
