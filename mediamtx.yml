@@ -1,0 +1,10 @@
+# Receive the PS5's RTMP push and open a player window while it is live.
+rtsp: no
+hls: no
+webrtc: no
+srt: no
+moq: no
+
+paths:
+  all_others:
+    runOnAvailable: ffplay -loglevel warning -fflags nobuffer -flags low_delay -framedrop -window_title PS5 rtmp://127.0.0.1:1935/$MTX_PATH
