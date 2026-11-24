@@ -1,0 +1,5 @@
+#!/bin/sh
+# Discord lists only windows that belong to an app, and ffplay alone is not an app.
+# macOS starts apps without the Homebrew directories on the PATH.
+PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
+exec ffplay "$@"
